@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voxera</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="login">
+    <input id="username" placeholder="Enter username" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- APP -->
+  <div id="app" style="display:none;">
+    <h2>Voxera</h2>
+    <h3>Online Users</h3>
+    <ul id="users"></ul>
+
+    <!-- CALL CONTROLS -->
+    <div id="callControls" style="display:none; margin-top:15px;">
+      <button id="muteBtn" onclick="toggleMute()">🔇 Mute</button>
+      <button onclick="endCall()">❌ End Call</button>
+    </div>
+
+    <!-- REMOTE AUDIO -->
+    <audio id="remoteAudio" controls></audio>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

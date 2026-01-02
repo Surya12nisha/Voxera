@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 40px;
+}
+
+#login input {
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 8px 14px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px;
+  cursor: pointer;
+  background: #1e293b;
+  margin-bottom: 6px;
+  border-radius: 5px;
+}
+
+li:hover {
+  background: #334155;
+}
+
+audio {
+  margin-top: 15px;
+  width: 100%;
+}

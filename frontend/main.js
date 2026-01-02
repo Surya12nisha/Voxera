@@ -1,18 +1,58 @@
 const socket = io("http://localhost:3000");
 
+// 🔊 Sounds
+const callConnectSound = new Audio("sounds/call-connect.mp3");
+const screenShareSound = new Audio("sounds/screen-share.mp3");
+const callEndSound = new Audio("sounds/call-end.mp3");
+
+callConnectSound.volume = 0.6;
+screenShareSound.volume = 0.6;
+callEndSound.volume = 0.6;
+
+// State
 let currentUser = "";
 let peerConnection = null;
 let localStream = null;
+let cameraStream = null;
 let caller = "";
 
 let inCall = false;
 let isMuted = false;
+let isScreenSharing = false;
 
 const config = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
 };
 
-/* LOGIN */
+/* =====================
+   UI HELPERS
+===================== */
+function showCallUI() {
+  document.getElementById("idleState").style.display = "none";
+  document.getElementById("remoteVideo").style.display = "block";
+  document.getElementById("localVideo").style.display = "block";
+  document.getElementById("callControls").style.display = "flex";
+}
+
+function showIdleUI() {
+  document.getElementById("remoteVideo").style.display = "none";
+  document.getElementById("localVideo").style.display = "none";
+  document.getElementById("callControls").style.display = "none";
+  document.getElementById("idleState").style.display = "flex";
+}
+
+function showCallStatus(text) {
+  document.getElementById("callStatusText").innerText = text;
+  document.getElementById("callStatus").style.display = "flex";
+}
+
+function hideCallStatus() {
+  document.getElementById("callStatus").style.display = "none";
+}
+
+/* =====================
+   LOGIN
+===================== */
 function login() {
   currentUser = document.getElementById("username").value.trim();
   if (!currentUser) return alert("Enter username");
@@ -21,9 +61,12 @@ function login() {
 
   document.getElementById("login").style.display = "none";
   document.getElementById("app").style.display = "block";
+  showIdleUI();
 }
 
-/* ONLINE USERS */
+/* =====================
+   ONLINE USERS
+===================== */
 socket.on("online-users", (users) => {
   const ul = document.getElementById("users");
   ul.innerHTML = "";
@@ -31,21 +74,38 @@ socket.on("online-users", (users) => {
   users.forEach(user => {
     if (user !== currentUser) {
       const li = document.createElement("li");
-      li.innerText = "📞 " + user;
+      li.innerHTML = `
+        <div class="user-item">
+          <div class="avatar">${user[0].toUpperCase()}</div>
+          <span>${user}</span>
+        </div>
+      `;
       li.onclick = () => startCall(user);
       ul.appendChild(li);
     }
   });
 });
 
-/* MEDIA */
+/* =====================
+   MEDIA (CAMERA + MIC)
+===================== */
 async function getMedia() {
   if (!localStream) {
-    localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    cameraStream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: true
+    });
+
+    localStream = cameraStream;
+    const localVideo = document.getElementById("localVideo");
+    localVideo.srcObject = localStream;
+    localVideo.muted = true;
   }
 }
 
-/* PEER CONNECTION */
+/* =====================
+   PEER CONNECTION
+===================== */
 function createPeerConnection(targetUser) {
   peerConnection = new RTCPeerConnection(config);
 
@@ -63,15 +123,24 @@ function createPeerConnection(targetUser) {
   };
 
   peerConnection.ontrack = (e) => {
-    const audio = document.getElementById("remoteAudio");
-    audio.srcObject = e.streams[0];
-    audio.play().catch(() => {});
+    const remoteVideo = document.getElementById("remoteVideo");
+    remoteVideo.srcObject = e.streams[0];
+
+    if (!peerConnection._connectedSoundPlayed) {
+      callConnectSound.play().catch(() => {});
+      peerConnection._connectedSoundPlayed = true;
+      hideCallStatus(); // ✅ hide "Calling…" when connected
+    }
   };
 }
 
-/* START CALL */
+/* =====================
+   START CALL (CALLER)
+===================== */
 async function startCall(user) {
   if (inCall) return alert("Already in a call");
+
+  showCallStatus("Calling…");
 
   socket.emit("call-user", {
     from: currentUser,
@@ -86,28 +155,35 @@ async function startCall(user) {
 
   socket.emit("webrtc-offer", { to: user, offer });
 
-  document.getElementById("callControls").style.display = "block";
+  showCallUI();
   inCall = true;
 }
 
-/* INCOMING CALL */
+/* =====================
+   INCOMING CALL
+===================== */
 socket.on("incoming-call", async ({ from }) => {
   caller = from;
+  showCallStatus("Incoming call…");
+
   const accept = confirm(`Incoming call from ${from}`);
-  if (!accept) return;
+  if (!accept) {
+    hideCallStatus();
+    return;
+  }
 
   await getMedia();
   createPeerConnection(from);
 
-  document.getElementById("callControls").style.display = "block";
+  showCallUI();
   inCall = true;
 });
 
-/* OFFER */
+/* =====================
+   OFFER / ANSWER
+===================== */
 socket.on("webrtc-offer", async (offer) => {
-  await peerConnection.setRemoteDescription(
-    new RTCSessionDescription(offer)
-  );
+  await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
 
   const answer = await peerConnection.createAnswer();
   await peerConnection.setLocalDescription(answer);
@@ -115,21 +191,20 @@ socket.on("webrtc-offer", async (offer) => {
   socket.emit("webrtc-answer", { to: caller, answer });
 });
 
-/* ANSWER */
 socket.on("webrtc-answer", async (answer) => {
-  await peerConnection.setRemoteDescription(
-    new RTCSessionDescription(answer)
-  );
+  await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
 });
 
-/* ICE */
+/* =====================
+   ICE
+===================== */
 socket.on("webrtc-ice-candidate", async (candidate) => {
-  await peerConnection.addIceCandidate(
-    new RTCIceCandidate(candidate)
-  );
+  await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
 });
 
-/* MUTE / UNMUTE */
+/* =====================
+   MUTE / UNMUTE
+===================== */
 function toggleMute() {
   if (!localStream) return;
 
@@ -141,8 +216,60 @@ function toggleMute() {
     isMuted ? "🎤 Unmute" : "🔇 Mute";
 }
 
-/* END CALL */
+/* =====================
+   SCREEN SHARE
+===================== */
+async function toggleScreen() {
+  if (!peerConnection) return;
+
+  if (!isScreenSharing) {
+    const screenStream = await navigator.mediaDevices.getDisplayMedia({
+      video: true,
+      audio: true
+    });
+
+    const videoSender = peerConnection.getSenders()
+      .find(s => s.track && s.track.kind === "video");
+    const audioSender = peerConnection.getSenders()
+      .find(s => s.track && s.track.kind === "audio");
+
+    videoSender.replaceTrack(screenStream.getVideoTracks()[0]);
+    if (screenStream.getAudioTracks()[0]) {
+      audioSender.replaceTrack(screenStream.getAudioTracks()[0]);
+    }
+
+    document.getElementById("localVideo").srcObject = screenStream;
+
+    isScreenSharing = true;
+    screenShareSound.play().catch(() => {});
+
+    screenStream.getVideoTracks()[0].onended = stopScreenShare;
+  } else {
+    stopScreenShare();
+  }
+}
+
+function stopScreenShare() {
+  if (!cameraStream || !peerConnection) return;
+
+  const videoSender = peerConnection.getSenders()
+    .find(s => s.track && s.track.kind === "video");
+  const audioSender = peerConnection.getSenders()
+    .find(s => s.track && s.track.kind === "audio");
+
+  videoSender.replaceTrack(cameraStream.getVideoTracks()[0]);
+  audioSender.replaceTrack(cameraStream.getAudioTracks()[0]);
+
+  document.getElementById("localVideo").srcObject = cameraStream;
+  isScreenSharing = false;
+}
+
+/* =====================
+   END CALL
+===================== */
 function endCall() {
+  callEndSound.play().catch(() => {});
+
   if (peerConnection) {
     peerConnection.close();
     peerConnection = null;
@@ -153,10 +280,13 @@ function endCall() {
     localStream = null;
   }
 
-  document.getElementById("remoteAudio").srcObject = null;
-  document.getElementById("callControls").style.display = "none";
+  document.getElementById("remoteVideo").srcObject = null;
+  document.getElementById("localVideo").srcObject = null;
+
+  hideCallStatus();
+  showIdleUI();
 
   isMuted = false;
-  document.getElementById("muteBtn").innerText = "🔇 Mute";
+  isScreenSharing = false;
   inCall = false;
 }

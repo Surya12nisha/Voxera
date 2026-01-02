@@ -1,31 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Voxera</title>
+  <title>Voxera • Real-Time Calling</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- LOGIN -->
-  <div id="login">
-    <input id="username" placeholder="Enter username" />
-    <button onclick="login()">Login</button>
+  <!-- BACKGROUND DECOR -->
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+
+  <!-- LOGIN / LANDING -->
+  <div id="login" class="glass-card">
+    <h1 class="brand-title">Voxera</h1>
+    <p class="brand-tagline">
+      Real-time voice, video & screen sharing.<br/>
+      Built for seamless communication.
+    </p>
+
+    <input id="username" placeholder="Enter your name" />
+    <button onclick="login()">Enter Voxera</button>
+
+    <p class="footer-text">
+      Powered by WebRTC & WebSockets
+    </p>
   </div>
 
   <!-- APP -->
   <div id="app" style="display:none;">
-    <h2>Voxera</h2>
-    <h3>Online Users</h3>
-    <ul id="users"></ul>
+    <div class="app-container">
 
-    <!-- CALL CONTROLS -->
-    <div id="callControls" style="display:none; margin-top:15px;">
-      <button id="muteBtn" onclick="toggleMute()">🔇 Mute</button>
-      <button onclick="endCall()">❌ End Call</button>
+      <!-- HEADER -->
+      <header class="app-header">
+        <div>
+          <h2>Voxera</h2>
+          <span class="subtitle">Connected & Ready</span>
+        </div>
+        <span class="status-dot">● Online</span>
+      </header>
+
+      <div class="main-content">
+
+        <!-- USERS PANEL -->
+        <aside class="users-panel">
+          <h3>People</h3>
+          <ul id="users"></ul>
+        </aside>
+
+        <!-- VIDEO PANEL -->
+        <section class="video-panel">
+
+          <!-- CALL STATUS OVERLAY (CALLING / RINGING) -->
+          <div id="callStatus" class="call-status" style="display:none;">
+            <div class="ringing">
+              <span class="pulse"></span>
+              <p id="callStatusText">Calling…</p>
+            </div>
+          </div>
+
+          <!-- IDLE STATE -->
+          <div id="idleState" class="idle-state">
+            <div class="idle-content">
+              <div class="idle-icon">🎧</div>
+              <h2>Welcome to <span>Voxera</span> 👋</h2>
+              <p>Select a person from the left to start a call</p>
+            </div>
+          </div>
+
+          <!-- REMOTE VIDEO -->
+          <video id="remoteVideo" autoplay playsinline></video>
+
+          <!-- LOCAL VIDEO (PiP) -->
+          <video id="localVideo" autoplay muted playsinline></video>
+
+          <!-- CONTROLS -->
+          <div id="callControls" class="controls" style="display:none;">
+            <button onclick="toggleMute()">🎤</button>
+            <button onclick="toggleScreen()">🖥️</button>
+            <button class="end" onclick="endCall()">📞</button>
+          </div>
+
+        </section>
+
+      </div>
     </div>
-
-    <!-- REMOTE AUDIO -->
-    <audio id="remoteAudio" controls></audio>
   </div>
 
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>

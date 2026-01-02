@@ -49,6 +49,15 @@ io.on("connection", (socket) => {
     }
   });
 
+  /* =====================
+     🔴 END CALL (NEW)
+  ===================== */
+  socket.on("end-call", ({ to }) => {
+    if (users[to]) {
+      io.to(users[to]).emit("call-ended");
+    }
+  });
+
   socket.on("disconnect", () => {
     for (let user in users) {
       if (users[user] === socket.id) {

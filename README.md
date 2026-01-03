@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/WebRTC-Real--Time-blue?style=for-the-badge">
   <img src="https://img.shields.io/badge/Socket.IO-WebSockets-black?style=for-the-badge">
   <img src="https://img.shields.io/badge/Node.js-Backend-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge">
 </p>
 
 <p align="center">
@@ -21,23 +21,35 @@
 
 > **Talk. See. Share. Instantly.**
 
-**Voxera** is a browser-based **real-time communication platform** that enables  
-📞 **voice calls**, 🎥 **video calls**, and 🖥️ **screen sharing** —  
-all with **ultra-low latency peer-to-peer streaming**.
+**Voxera** is a browser-based **real-time communication platform** enabling  
+📞 **voice calls**, 🎥 **video calls**, and 🖥️ **screen sharing**  
+using **ultra-low latency peer-to-peer streaming**.
 
-Inspired by **Google Meet**, **Zoom**, and **Discord Voice**, Voxera focuses on the **engineering fundamentals** behind modern real-time systems rather than relying on third-party SDKs.
+Inspired by **Google Meet**, **Zoom**, and **Discord Voice**, Voxera is built to explore the **core engineering behind real-time systems**, without relying on third-party media SDKs.
+
+---
+
+## 🌐 Live Demo
+
+🔗 **Frontend:**  
+👉 https://voxera-rtc.netlify.app  
+
+🔗 **Backend (Signaling Server):**  
+👉 https://voxera-g4st.onrender.com  
+
+> ⚠️ Note: On free hosting, the first request may take ~30 seconds due to cold starts.
 
 ---
 
 ## ⚡ Why Voxera?
 
 ✔ No media server relay  
-✔ Direct peer-to-peer streaming  
-✔ Real-time signaling  
-✔ Clean call lifecycle handling  
-✔ Production-style UI logic  
+✔ True peer-to-peer streaming  
+✔ Real-time WebSocket signaling  
+✔ Clean call lifecycle management  
+✔ Production-style UI & UX logic  
 
-> Voxera is built to **understand how real-time systems actually work**, not just how to use them.
+> Voxera is built to **understand how real-time systems actually work**, not just how to use APIs.
 
 ---
 
@@ -62,10 +74,8 @@ Login → Online Users → Call → Video → Screen Share → End Call
 * 📞 One-to-one **voice & video calls**
 * 🖥️ **Screen sharing** with system audio
 * ⚡ **Ultra-low latency** peer-to-peer streaming
-* 🔊 Call connect, screen share & end-call sounds
-* ❌ **Synchronized call ending** (ends on both sides)
-
----
+* 🔊 Call connect / share / end sounds
+* ❌ **Synchronized call termination**
 
 ### 🎛️ Call Controls
 
@@ -74,11 +84,9 @@ Login → Online Users → Call → Video → Screen Share → End Call
 * 📞 End call
 * 🪟 Floating camera (**Picture-in-Picture**)
 
----
-
 ### 🎨 UI & UX Experience
 
-* ✨ Google Meet–inspired professional UI
+* ✨ Google Meet–inspired interface
 * 🌌 Glassmorphism + gradient backgrounds
 * 🎥 Smart layout (screen-first, camera PiP)
 * 🔔 Call state overlays (Calling / Incoming)
@@ -113,22 +121,22 @@ User A  ── WebRTC (Audio / Video / Screen) ──▶  User B
    └──── Socket.IO (Signaling & Presence) ───────┘
 ```
 
-### 🔄 WebSockets Handle:
+### 🔄 WebSockets Handle
 
-* User login & presence
+* User presence & login
 * Online user list
 * Call requests
 * SDP & ICE signaling
 * Call end synchronization
 
-### 🎥 WebRTC Handles:
+### 🎥 WebRTC Handles
 
 * Peer-to-peer media streaming
 * Camera & microphone capture
 * Screen sharing with system audio
 * NAT traversal via ICE
 
-> ⚠️ **Media streams never touch the server** — they flow directly between peers.
+> ⚠️ **Media streams never pass through the server** — they flow directly between peers.
 
 ---
 
@@ -153,16 +161,16 @@ Voxera/
 
 ---
 
-## ▶️ How to Run the Project
+## ▶️ Run Locally
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/vansh070605/Voxera.git
 cd Voxera
 ```
 
-### 2️⃣ Start the Backend Server
+### 2️⃣ Start Backend
 
 ```bash
 cd backend
@@ -170,29 +178,27 @@ npm install
 node server.js
 ```
 
-Expected output:
-
 ```text
 ✅ Voxera signaling server running on port 3000
 ```
 
-### 3️⃣ Run the Frontend
+### 3️⃣ Run Frontend
 
-* Open `frontend/index.html` in **two browser tabs or devices**
+* Open `frontend/index.html` in **two browsers/devices**
 * Login with different usernames
 * Start calling 🚀
 
-> 💡 Recommended browser: **Google Chrome**
+> Recommended browser: **Google Chrome**
 
 ---
 
-## 🎯 Call Flow Lifecycle
+## 🎯 Call Lifecycle
 
 ```text
 Login → Select User → Call → Connect → Share Screen → End Call
 ```
 
-✔ Ending a call on one side disconnects both users
+✔ Ending a call on one side disconnects both peers
 ✔ UI resets cleanly on both ends
 
 ---
@@ -203,18 +209,18 @@ Login → Select User → Call → Connect → Share Screen → End Call
 * ICE candidate exchange & NAT traversal
 * Media track replacement (screen sharing)
 * Real-time state synchronization
-* Socket-based signaling
+* Socket-based signaling architecture
 * Production-grade call lifecycle handling
 
 ---
 
 ## 🔒 Current Limitations
 
-* 🔹 One-to-one calls only
-* 🔹 No TURN server (fails on strict NATs)
-* 🔹 No authentication system
-* 🔹 No call recording
-* 🔹 No group calls (yet)
+* One-to-one calls only
+* No TURN server (may fail on strict NATs)
+* No authentication
+* No call recording
+* No group calls (yet)
 
 ---
 
@@ -222,17 +228,17 @@ Login → Select User → Call → Connect → Share Screen → End Call
 
 * 👥 Group calls / voice rooms
 * 🎥 Camera on/off toggle
-* ⏱️ Call duration timer
-* 🔐 User authentication
+* ⏱️ Call duration analytics
+* 🔐 Authentication & user profiles
 * 🌍 TURN server integration
 * 📊 Network quality indicators
-* 📱 Mobile responsiveness
+* 📱 Improved mobile UX
 
 ---
 
 ## 📄 Resume-Ready Project Statement
 
-> **Voxera** is a real-time communication web application built using **WebRTC and WebSockets** that enables peer-to-peer voice calls, video calls, and screen sharing with synchronized call lifecycle management and a modern, production-grade UI.
+> **Voxera** is a real-time communication web application built using **WebRTC and WebSockets**, enabling peer-to-peer voice calls, video calls, and screen sharing with synchronized call lifecycle management and a modern, production-grade UI.
 
 ---
 
@@ -252,3 +258,4 @@ It demonstrates the same foundational concepts used in **Google Meet, Zoom, and 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1e3a8a,100:38bdf8&height=90&section=footer" />
 </p>
+```

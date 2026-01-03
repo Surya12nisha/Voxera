@@ -1,6 +1,6 @@
 let pendingOffer = null;
 
-const socket = io("http://localhost:3000");
+const socket = io("https://voxera-g4st.onrender.com");
 
 // 🔊 Sounds
 const callConnectSound = new Audio("sounds/call-connect.mp3");

@@ -258,4 +258,3 @@ It demonstrates the same foundational concepts used in **Google Meet, Zoom, and 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1e3a8a,100:38bdf8&height=90&section=footer" />
 </p>
-```

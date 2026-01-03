@@ -48,9 +48,9 @@ Login → Online Users → Call → Video → Screen Share → End Call
 ````
 
 <p align="center">
-  <img src="image.png" width="32%" />
-  <img src="image-1.png" width="32%" />
-  <img src="ss.png" width="32%" />
+  <img src="screenshots/image-1.png" width="32%" />
+  <img src="screenshots/image.png" width="32%" />
+  <img src="screenshots/ss.png" width="32%" />
 </p>
 
 ---

